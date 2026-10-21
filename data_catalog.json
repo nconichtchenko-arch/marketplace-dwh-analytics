@@ -1,0 +1,91 @@
+{
+    "project": "DWH Marketplace Analytics",
+    "version": "1.0",
+    "generated_at": "2026-10-21",
+    "tables": {
+        "dim_customers": {
+            "description": "Таблица dim_customers",
+            "columns": [
+                {
+                    "name": "customer_id",
+                    "type": "integer"
+                },
+                {
+                    "name": "country",
+                    "type": "character varying"
+                }
+            ]
+        },
+        "fact_sales": {
+            "description": "Таблица fact_sales",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer"
+                },
+                {
+                    "name": "invoice_no",
+                    "type": "character varying"
+                },
+                {
+                    "name": "customer_id",
+                    "type": "integer"
+                },
+                {
+                    "name": "stock_code",
+                    "type": "character varying"
+                },
+                {
+                    "name": "date_id",
+                    "type": "date"
+                },
+                {
+                    "name": "quantity",
+                    "type": "integer"
+                },
+                {
+                    "name": "price",
+                    "type": "numeric"
+                },
+                {
+                    "name": "total_amount",
+                    "type": "numeric"
+                }
+            ]
+        },
+        "dim_products": {
+            "description": "Таблица dim_products",
+            "columns": [
+                {
+                    "name": "stock_code",
+                    "type": "character varying"
+                },
+                {
+                    "name": "description",
+                    "type": "text"
+                }
+            ]
+        },
+        "dim_dates": {
+            "description": "Таблица dim_dates",
+            "columns": [
+                {
+                    "name": "date_id",
+                    "type": "date"
+                },
+                {
+                    "name": "year",
+                    "type": "integer"
+                },
+                {
+                    "name": "month",
+                    "type": "integer"
+                },
+                {
+                    "name": "day",
+                    "type": "integer"
+                }
+            ]
+        }
+    }
+}
