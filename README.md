@@ -45,3 +45,11 @@
 *   Использовать каталог для дальнейшей интеграции с инструментами Data Lineage.
 
 Пример сгенерированного каталога доступен в файле [`data_catalog.json`](data_catalog.json).
+
+## ⚙️ Оркестрация (Apache Airflow)
+
+Для автоматизации ETL-процесса развернут **Apache Airflow** (через Docker Compose). 
+
+Настроен DAG (`marketplace_dwh_etl_pipeline`), который ежедневно запускает скрипт загрузки данных в DWH. Успешное выполнение задачи подтверждено в веб-интерфейсе.
+
+![Airflow Graph](airflow_graph.png)
