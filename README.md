@@ -71,4 +71,4 @@
 
 **Вывод:** ClickHouse показал ускорение в **6.8 раз**, несмотря на то, что объем данных был на 33% больше. Это подтверждает эффективность колоночных OLAP-СУБД для аналитических задач. PostgreSQL остается оптимальным выбором для транзакционных нагрузок (OLTP).
 
-![ClickHouse Benchmark](clickhouse_benchmark/clickhouse_benchmark.png)
+![ClickHouse Benchmark](clickhouse_benchmark.png)
