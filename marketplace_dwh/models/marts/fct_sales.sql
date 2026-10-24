@@ -1,3 +1,8 @@
+{{ config(
+    materialized='incremental',
+    unique_key=['invoice_no', 'stock_code', 'order_date', 'customer_id']
+) }}
+
 SELECT
     invoice_no,
     stock_code,
