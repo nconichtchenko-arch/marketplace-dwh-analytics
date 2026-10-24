@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: fct_sales
-    description: "Витрина агрегированных продаж по чекам и товарам"
+    description: "Витрина агрегированных продаж по чекам и товарам (инкрементальная)"
     columns:
       - name: invoice_no
         description: "Номер счета"
@@ -12,6 +12,24 @@ models:
         description: "Код товара"
         tests:
           - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: stock_code
+      - name: customer_id
+        description: "ID клиента"
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
+      - name: order_date
+        description: "Дата продажи"
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_dates')
+                field: date_id
       - name: total_revenue
         description: "Общая выручка"
         tests:
