@@ -78,12 +78,27 @@
 В проект интегрирован **dbt (data build tool)** для организации слоя трансформаций (ELT) поверх готового DWH.
 
 **Реализованные модели:**
-*   `stg_sales` (staging) — очистка и подготовка данных из `fact_sales`.
-*   `fct_sales` (marts) — агрегированная витрина продаж (выручка и количество по чекам и товарам).
+- `stg_sales` (staging) — очистка и подготовка данных из `fact_sales`.
+- `dim_products`, `dim_customers`, `dim_dates` (marts) — измерения для модели «Звезда».
+- `fct_sales` (marts) — **инкрементальная** витрина продаж (выручка и количество по чекам и товарам).
 
-**Тестирование:**
-Настроены тесты `not_null` для ключевых полей (`invoice_no`, `stock_code`, `total_revenue`), что гарантирует качество данных на выходе.
+**Тестирование и качество данных:**
+- Настроены тесты `not_null` для ключевых полей (`invoice_no`, `stock_code`, `total_revenue`).
+- Настроены тесты `relationships` для проверки ссылочной целостности:
+  - `fct_sales.stock_code` → `dim_products.stock_code`
+  - `fct_sales.customer_id` → `dim_customers.customer_id`
+  - `fct_sales.order_date` → `dim_dates.date_id`
+
+**Результат:** все тесты проходят (PASS=5), данные в витрине консистентны.
 
 **Стек dbt:**
-*   `dbt-core` 1.12.6, `dbt-postgres` 1.11.0.
-*   Модели собираются в схеме `dbt_schema` базы `dwh_marketplace`.
+- `dbt-core` 1.12.6, `dbt-postgres` 1.11.0.
+- Модели собираются в схеме `dbt_schema` базы `dwh_marketplace`.
+
+### Сборка инкрементальной модели
+
+![Результаты dbt run](dbt_run_results.png)
+
+### Прохождение тестов (not_null + relationships)
+
+![Результаты dbt test](dbt_test_results.png)
