@@ -54,6 +54,12 @@
 
 ![Airflow Graph](airflow_graph.png)
 
+### Результат запуска DAG в Airflow
+
+DAG `marketplace_dwh_etl_pipeline` успешно запущен (статус Running/Success), задачи выполнены.
+
+![Airflow DAG Run](airflow_dag_run.png)
+
 ## ⚡ Бенчмарк: PostgreSQL vs ClickHouse
 
 В рамках развития проекта я провел сравнение скорости агрегационных запросов в двух СУБД на одном и том же датасете.
