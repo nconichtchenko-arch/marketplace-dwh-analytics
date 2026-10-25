@@ -67,7 +67,9 @@ DAG использует:
 - `BranchPythonOperator` (`check_file_exists`) — выбирает ветку выполнения (ETL или уведомление об ошибке).
 - `TaskGroup` (`run_group`) — группирует задачи ETL (`run_etl_script` → `notify_success`).
 
-![Airflow DAG с ветвлением и группами](airflow_dag_branch_group.png)
+![Airflow DAG Graph](airflow_dag_graph.png)
+
+*Скриншот графа DAG с ветвлением (`BranchPythonOperator`) и группой задач (`TaskGroup`).*
 
 ## 🧱 Трансформация данных (dbt)
 
