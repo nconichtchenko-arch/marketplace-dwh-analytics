@@ -60,6 +60,17 @@ DAG `marketplace_dwh_etl_pipeline` успешно запущен (статус R
 
 ![Airflow DAG Run](airflow_dag_run.png)
 
+### Граф DAG с сенсором и уведомлением
+
+DAG `marketplace_dwh_etl_pipeline` включает три задачи:
+- `wait_for_etl_script` (FileSensor) — ожидает появления ETL-скрипта.
+- `run_etl_script` (BashOperator) — запускает ETL.
+- `notify_success` (BashOperator) — уведомляет об успехе.
+
+Настроены `retries` (3 попытки, экспоненциальный backoff) и `catchup=True` (backfill).
+
+![Airflow DAG Graph](airflow_dag_graph.png)
+
 ## ⚡ Бенчмарк: PostgreSQL vs ClickHouse
 
 В рамках развития проекта я провел сравнение скорости агрегационных запросов в двух СУБД на одном и том же датасете.
