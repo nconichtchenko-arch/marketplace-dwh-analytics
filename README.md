@@ -79,6 +79,12 @@
 
 **Результат:** все тесты проходят (PASS=5), данные в витрине консистентны.
 
+### SCD Type 2 (dbt snapshot)
+
+Настроен снапшот `dim_customers_snapshot` (стратегия `check` по колонке `country`). dbt отслеживает изменения страны клиента и создаёт новую версию записи, сохраняя историю (SCD Type 2).
+
+Скрипт: `snapshots/dim_customers_snapshot.sql`.
+
 **Стек dbt:** `dbt-core` 1.12.6, `dbt-postgres` 1.11.0.
 
 ![Результаты dbt test](dbt_test_results.png)
