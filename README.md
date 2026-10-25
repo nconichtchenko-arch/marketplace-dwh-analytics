@@ -61,6 +61,10 @@
 
 Скрипт: `data_quality_checks.py`. Все проверки проходят (`✅ Все проверки пройдены`).
 
+Скрипт: `data_quality_checks.py`. Все проверки проходят (23/23 метрики).
+
+![Результат проверок Data Quality](data_quality_check_result.png)
+
 Пример сгенерированного каталога (включая Lineage) доступен в файле [`data_catalog.json`](data_catalog.json).
 
 ## ⚙️ Оркестрация (Apache Airflow)
