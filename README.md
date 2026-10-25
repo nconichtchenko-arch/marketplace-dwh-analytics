@@ -2,86 +2,57 @@
 
 **Pet-проект** по построению корпоративного хранилища данных (DWH) для e-commerce на реальном датасете (397 924 строки). Демонстрирует полный цикл: от ETL и оркестрации до трансформаций, тестов и аналитики.
 
+**Ключевые навыки:** SQL, Python (Pandas, SQLAlchemy), PostgreSQL, Apache Airflow, dbt, ClickHouse, Data Quality (Great Expectations).
+
+---
+
 ## 🏗 Архитектура хранилища (Схема Звезда)
 
 В основе проекта лежит модель данных «Звезда» (Star Schema), состоящая из одной таблицы фактов и трех таблиц измерений. Это позволяет аналитикам писать быстрые запросы для расчета бизнес-метрик.
 
 ![Схема Звезда](star_schema.png)
 
-*   **`fact_sales`** — таблица фактов (транзакции: количество, цена, сумма).
-*   **`dim_customers`** — измерение «Клиенты» (ID клиента, страна).
-*   **`dim_products`** — измерение «Товары» (Артикул, описание).
-*   **`dim_dates`** — измерение «Даты» (Год, месяц, день).
+- **`fact_sales`** — таблица фактов (транзакции: количество, цена, сумма).
+- **`dim_customers`** — измерение «Клиенты» (ID клиента, страна).
+- **`dim_products`** — измерение «Товары» (Артикул, описание).
+- **`dim_dates`** — измерение «Даты» (Год, месяц, день).
 
 ## ⚙️ ETL-процесс
+
 Данные загружаются из сырого CSV-файла (397 924 строки) с помощью Python-скрипта (`etl_star_schema.py`). Скрипт очищает данные от возвратов и пустых значений, после чего раскладывает их по таблицам DWH в PostgreSQL.
 
 ## 🚀 Ключевые результаты
-*   Загружено и обработано **397 924** строк транзакций.
-*   Спроектирована модель DWH с разделением на Fact/Dim.
-*   **Оптимизация SQL:** Проведен анализ плана запросов (EXPLAIN ANALYZE). Созданы индексы, позволившие ускорить агрегационные запросы в 6 раз (с 6.3 сек до 0.9 сек).
+
+- Загружено и обработано **397 924** строк транзакций.
+- Спроектирована модель DWH с разделением на Fact/Dim.
+- **Оптимизация SQL:** Проведен анализ плана запросов (EXPLAIN ANALYZE). Созданы индексы, позволившие ускорить агрегационные запросы в 6 раз (с 6.3 сек до 0.9 сек).
 
 ## 📊 Результаты работы
+
 ![Результат SQL-запроса](sql_result.png)
 
 Пример аналитического запроса к модели «Звезда» — выручка по странам:
 
 ## 📈 Визуализация (Power BI)
+
 ![Дашборд](dashboard.png)
 
 ## 🛠 Технологии
 
-*   **Python** (Pandas, SQLAlchemy) — для ETL и обработки данных.
-*   **PostgreSQL** — основная база данных хранилища.
-*   **SQL** — для аналитических запросов и оптимизации (EXPLAIN ANALYZE).
-*   **Apache Airflow** — оркестрация ETL-пайплайна (Docker).
-*   **dbt** (data build tool) — трансформация данных (ELT), тесты и Lineage.
-*   **ClickHouse** — колоночная OLAP-СУБД для аналитики (партиционирование, TTL, Materialized View).
-*   **DuckDB** — аналитика файлов (Parquet, CSV) без ETL.
-*   **Docker** — контейнеризация (Airflow, ClickHouse).
-*   **Power BI** — визуализация данных (дашборды).
-
-## 🗂 Data Governance (Каталогизация данных)
-
-В проекте реализован элемент управления метаданными (Data Governance). Скрипт `catalog_generator.py` автоматически подключается к DWH, анализирует структуру таблиц (`information_schema`) и генерирует **Data Catalog** в формате JSON.
-
-Это позволяет:
-*   Автоматически отслеживать изменения схемы данных.
-*   Хранить документацию по каждой таблице и колонке.
-*   Использовать каталог для дальнейшей интеграции с инструментами Data Lineage.
-
-**Data Lineage:** Скрипт также парсит dbt-модели (`schema.yml`, `sources.yml`, `manifest.json`) и добавляет в каталог связи между таблицами. Пример: `fct_sales` зависит от `dim_products`, `dim_customers`, `dim_dates`, `stg_sales`.
-
-### Data Quality (Great Expectations)
-
-Настроены проверки качества данных для витрины `fct_sales` с помощью **Great Expectations**:
-- `total_revenue` не отрицательный и не пустой.
-- `invoice_no` не пустой.
-- `stock_code` не пустой.
-
-Скрипт: `data_quality_checks.py`. Все проверки проходят (23/23 метрики).
-
-![Результат проверок Data Quality](data_quality_check_result.png)
-
-Пример сгенерированного каталога (включая Lineage) доступен в файле [`data_catalog.json`](data_catalog.json).
+- **Python** (Pandas, SQLAlchemy) — для ETL и обработки данных.
+- **PostgreSQL** — основная база данных хранилища.
+- **SQL** — для аналитических запросов и оптимизации (EXPLAIN ANALYZE).
+- **Apache Airflow** — оркестрация ETL-пайплайна (Docker).
+- **dbt** (data build tool) — трансформация данных (ELT), тесты и Lineage.
+- **ClickHouse** — колоночная OLAP-СУБД для аналитики (партиционирование, TTL, Materialized View).
+- **Docker** — контейнеризация (Airflow, ClickHouse).
+- **Power BI** — визуализация данных (дашборды).
 
 ## ⚙️ Оркестрация (Apache Airflow)
 
-Для автоматизации ETL-процесса развернут **Apache Airflow** (через Docker Compose). 
+Для автоматизации ETL-процесса развернут Apache Airflow (через Docker Compose). Настроен DAG (`marketplace_dwh_etl_pipeline`), который ежедневно запускает скрипт загрузки данных в DWH.
 
-Настроен DAG (`marketplace_dwh_etl_pipeline`), который ежедневно запускает скрипт загрузки данных в DWH. Успешное выполнение задачи подтверждено в веб-интерфейсе.
-
-![Airflow Graph](airflow_graph.png)
-
-### Результат запуска DAG в Airflow
-
-DAG `marketplace_dwh_etl_pipeline` успешно запущен (статус Running/Success), задачи выполнены.
-
-![Airflow DAG Run](airflow_dag_run.png)
-
-### Граф DAG с сенсором и уведомлением
-
-DAG `marketplace_dwh_etl_pipeline` включает три задачи:
+**DAG включает три задачи:**
 - `wait_for_etl_script` (FileSensor) — ожидает появления ETL-скрипта.
 - `run_etl_script` (BashOperator) — запускает ETL.
 - `notify_success` (BashOperator) — уведомляет об успехе.
@@ -89,25 +60,6 @@ DAG `marketplace_dwh_etl_pipeline` включает три задачи:
 Настроены `retries` (3 попытки, экспоненциальный backoff) и `catchup=True` (backfill).
 
 ![Airflow DAG Graph](airflow_dag_graph.png)
-
-## ⚡ Бенчмарк: PostgreSQL vs ClickHouse
-
-В рамках развития проекта я провел сравнение скорости агрегационных запросов в двух СУБД на одном и том же датасете.
-
-**Условия:**
-*   **PostgreSQL:** 397 924 строки (после очистки данных).
-*   **ClickHouse:** 531 285 строк (загружено «как есть», без агрессивной очистки).
-*   **Запрос:** `GROUP BY` с суммированием выручки и сортировкой (топ-10).
-
-| СУБД | Время выполнения (среднее из 3 запусков) |
-|---|---|
-| PostgreSQL | 0.5244 сек |
-| ClickHouse | 0.0774 сек |
-| **Ускорение** | **6.8x** |
-
-**Вывод:** ClickHouse показал ускорение в **6.8 раз**, несмотря на то, что объем данных был на 33% больше. Это подтверждает эффективность колоночных OLAP-СУБД для аналитических задач. PostgreSQL остается оптимальным выбором для транзакционных нагрузок (OLTP).
-
-![ClickHouse Benchmark](clickhouse_benchmark.png)
 
 ## 🧱 Трансформация данных (dbt)
 
@@ -127,49 +79,46 @@ DAG `marketplace_dwh_etl_pipeline` включает три задачи:
 
 **Результат:** все тесты проходят (PASS=5), данные в витрине консистентны.
 
-**Стек dbt:**
-- `dbt-core` 1.12.6, `dbt-postgres` 1.11.0.
-- Модели собираются в схеме `dbt_schema` базы `dwh_marketplace`.
-
-### Сборка инкрементальной модели
-
-![Результаты dbt run](dbt_run_results.png)
-
-### Прохождение тестов (not_null + relationships)
+**Стек dbt:** `dbt-core` 1.12.6, `dbt-postgres` 1.11.0.
 
 ![Результаты dbt test](dbt_test_results.png)
 
-### Data Lineage (dbt docs)
+## ✅ Data Quality (Great Expectations)
 
-Сгенерирован граф зависимостей моделей через `dbt docs generate`. Показывает, как `raw.fact_sales` → `stg_sales` → `fct_sales`, а также связи измерений (`dim_*`).
+Настроены проверки качества данных для витрины `fct_sales` с помощью **Great Expectations**:
+- `total_revenue` не отрицательный и не пустой.
+- `invoice_no` не пустой.
+- `stock_code` не пустой.
 
-![dbt Lineage Graph](dbt_lineage_graph.png)
+Скрипт: `data_quality_checks.py`. Все проверки проходят (23/23 метрики).
+
+![Результат проверок Data Quality](data_quality_check_result.png)
 
 ## 🏎️ Продвинутая работа с ClickHouse
 
-Помимо бенчмарка, в рамках изучения ClickHouse были отработаны продвинутые механизмы хранения и обработки данных.
+Помимо бенчмарка (PostgreSQL vs ClickHouse — ускорение 6.8x), были отработаны продвинутые механизмы хранения и обработки данных:
 
-### Партиционирование и TTL (Time-to-Live)
-
-Создана таблица с партиционированием по месяцам (`PARTITION BY toYYYYMM(event_date)`) и настроен TTL для автоматического удаления устаревших данных (старше 30 дней).
-
-Проверка показала:
-- Данные автоматически разбиваются на партиции (`202610`, `202611`).
-- TTL срабатывает и удаляет старые строки (в примере строка из 2020 года была удалена, осталась только актуальная).
+- **Партиционирование** (`MergeTree`, `PARTITION BY toYYYYMM(event_date)`) — данные автоматически разбиваются на партиции (202610, 202611).
+- **TTL** — автоматическое удаление устаревших данных (старше 30 дней).
+- **Materialized View** (`SummingMergeTree`) — предагрегация данных при вставке.
 
 ![ClickHouse партиции и TTL](clickhouse_partitions_ttl.png)
 
-### Материализованное представление (SummingMergeTree)
+---
 
-Создано материализованное представление (`MATERIALIZED VIEW`), которое автоматически агрегирует данные при вставке в исходную таблицу. Использован движок `SummingMergeTree` для предагрегации.
+## 🧪 Дополнительные эксперименты (Pet-исследования)
 
-После принудительного слияния (`OPTIMIZE TABLE ... FINAL`) данные «схлопываются»:
-- `click` = 2
-- `view` = 2
+Эти разделы не входят в основной DWH-пайплайн, но демонстрируют широту навыков и понимание современных инструментов.
 
-![ClickHouse Materialized View](clickhouse_mv.png)
+### 🗂 Data Governance (Каталогизация данных)
 
-## 🧊 Lakehouse (Apache Iceberg)
+Скрипт `catalog_generator.py` автоматически подключается к DWH, анализирует структуру таблиц (`information_schema`) и генерирует **Data Catalog** в формате JSON. Скрипт также парсит dbt-модели (`schema.yml`, `sources.yml`, `manifest.json`) и добавляет в каталог связи между таблицами (Lineage).
+
+**Пример Lineage:** `fct_sales` зависит от `dim_products`, `dim_customers`, `dim_dates`, `stg_sales`.
+
+Пример каталога: [`data_catalog.json`](data_catalog.json).
+
+### 🧊 Lakehouse (Apache Iceberg)
 
 Реализован pet-пример работы с **Apache Iceberg** (формат таблиц поверх Parquet):
 - Создана Iceberg-таблица `demo.test_iceberg` (каталог SQLite, данные в Parquet).
@@ -180,4 +129,15 @@ DAG `marketplace_dwh_etl_pipeline` включает три задачи:
 
 ![Результат работы с Iceberg](iceberg_demo_result.png)
 
-**Стек:** PostgreSQL, SQL, ClickHouse (MergeTree, SummingMergeTree, Materialized View, TTL), Airflow, dbt, DuckDB, Docker.
+### 🦆 DuckDB + Parquet Analytics
+
+Мини-проект по аналитике Parquet через DuckDB (без ETL). CSV → Parquet, сжатие в 11,4 раза. Вынесен в отдельный репозиторий: [duckdb-parquet-analytics](https://github.com/nconichtchenko-arch/duckdb-parquet-analytics).
+
+---
+
+## 📫 Контакты
+
+- **Email:** pavloni@mail.ru
+- **GitHub:** [github.com/nconichtchenko-arch](https://github.com/nconichtchenko-arch)
+- **Проживание:** Воронеж
+- **Формат работы:** удалённо
