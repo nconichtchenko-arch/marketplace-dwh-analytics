@@ -120,6 +120,12 @@ DAG `marketplace_dwh_etl_pipeline` включает три задачи:
 
 ![Результаты dbt test](dbt_test_results.png)
 
+### Data Lineage (dbt docs)
+
+Сгенерирован граф зависимостей моделей через `dbt docs generate`. Показывает, как `raw.fact_sales` → `stg_sales` → `fct_sales`, а также связи измерений (`dim_*`).
+
+![dbt Lineage Graph](dbt_lineage_graph.png)
+
 ## 🏎️ Продвинутая работа с ClickHouse
 
 Помимо бенчмарка, в рамках изучения ClickHouse были отработаны продвинутые механизмы хранения и обработки данных.
