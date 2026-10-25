@@ -100,9 +100,9 @@
 
 Скрипт: `data_quality_checks.py`. Все проверки проходят (23/23 метрики).
 
-![Результат проверок Data Quality](data_quality_check_result.png)
-
 **Data Drift:** Скрипт также проверяет отклонение среднего `total_revenue` от эталонного значения (`baseline_stats.json`). Если отклонение больше 10% — тест падает.
+
+![Результат проверок Data Quality](data_quality_check_result.png)
 
 Пример вывода:
 📊 Текущее среднее: 25.07, Эталон: 22.89, Отклонение: 9.55%
