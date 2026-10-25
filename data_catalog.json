@@ -1,7 +1,7 @@
 {
     "project": "DWH Marketplace Analytics",
     "version": "1.0",
-    "generated_at": "2026-10-21",
+    "generated_at": "2026-10-25",
     "tables": {
         "dim_customers": {
             "description": "Таблица dim_customers",
@@ -87,5 +87,17 @@
                 }
             ]
         }
+    },
+    "lineage": {
+        "raw.fact_sales": [],
+        "raw.dim_customers": [],
+        "raw.dim_dates": [],
+        "raw.dim_products": [],
+        "fct_sales": [
+            "dim_products",
+            "dim_customers",
+            "dim_dates",
+            "stg_sales"
+        ]
     }
 }
