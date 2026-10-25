@@ -61,6 +61,14 @@
 
 ![Airflow DAG Graph](airflow_dag_graph.png)
 
+### Ветвление и группы в DAG
+
+DAG использует:
+- `BranchPythonOperator` (`check_file_exists`) — выбирает ветку выполнения (ETL или уведомление об ошибке).
+- `TaskGroup` (`run_group`) — группирует задачи ETL (`run_etl_script` → `notify_success`).
+
+![Airflow DAG с ветвлением и группами](airflow_dag_branch_group.png)
+
 ## 🧱 Трансформация данных (dbt)
 
 В проект интегрирован **dbt (data build tool)** для организации слоя трансформаций (ELT) поверх готового DWH.
