@@ -169,4 +169,15 @@ DAG `marketplace_dwh_etl_pipeline` включает три задачи:
 
 ![ClickHouse Materialized View](clickhouse_mv.png)
 
+## 🧊 Lakehouse (Apache Iceberg)
+
+Реализован pet-пример работы с **Apache Iceberg** (формат таблиц поверх Parquet):
+- Создана Iceberg-таблица `demo.test_iceberg` (каталог SQLite, данные в Parquet).
+- Записаны и прочитаны данные (3 строки).
+- Показана история таблицы (snapshots).
+
+Скрипт: `iceberg_demo.py`. Демонстрирует понимание Lakehouse (ACID-транзакции, time travel, schema evolution).
+
+![Результат работы с Iceberg](iceberg_demo_result.png)
+
 **Стек:** PostgreSQL, SQL, ClickHouse (MergeTree, SummingMergeTree, Materialized View, TTL), Airflow, dbt, DuckDB, Docker.
