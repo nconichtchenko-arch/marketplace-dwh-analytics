@@ -52,6 +52,15 @@
 
 **Data Lineage:** Скрипт также парсит dbt-модели (`schema.yml`, `sources.yml`, `manifest.json`) и добавляет в каталог связи между таблицами. Пример: `fct_sales` зависит от `dim_products`, `dim_customers`, `dim_dates`, `stg_sales`.
 
+### Data Quality (Great Expectations)
+
+Настроены проверки качества данных для витрины `fct_sales` с помощью **Great Expectations**:
+- `total_revenue` не отрицательный и не пустой.
+- `invoice_no` не пустой.
+- `stock_code` не пустой.
+
+Скрипт: `data_quality_checks.py`. Все проверки проходят (`✅ Все проверки пройдены`).
+
 Пример сгенерированного каталога (включая Lineage) доступен в файле [`data_catalog.json`](data_catalog.json).
 
 ## ⚙️ Оркестрация (Apache Airflow)
