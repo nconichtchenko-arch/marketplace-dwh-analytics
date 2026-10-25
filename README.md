@@ -44,7 +44,9 @@
 *   Хранить документацию по каждой таблице и колонке.
 *   Использовать каталог для дальнейшей интеграции с инструментами Data Lineage.
 
-Пример сгенерированного каталога доступен в файле [`data_catalog.json`](data_catalog.json).
+**Data Lineage:** Скрипт также парсит dbt-модели (`schema.yml`, `sources.yml`, `manifest.json`) и добавляет в каталог связи между таблицами. Пример: `fct_sales` зависит от `dim_products`, `dim_customers`, `dim_dates`, `stg_sales`.
+
+Пример сгенерированного каталога (включая Lineage) доступен в файле [`data_catalog.json`](data_catalog.json).
 
 ## ⚙️ Оркестрация (Apache Airflow)
 
