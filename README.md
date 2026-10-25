@@ -152,4 +152,4 @@ DAG `marketplace_dwh_etl_pipeline` включает три задачи:
 
 ![ClickHouse Materialized View](clickhouse_mv.png)
 
-**Стек:** ClickHouse, MergeTree, SummingMergeTree, Materialized View, TTL, Airflow, dbt, ClickHouse, DuckDB
+**Стек:** PostgreSQL, SQL, ClickHouse (MergeTree, SummingMergeTree, Materialized View, TTL), Airflow, dbt, DuckDB, Docker.
