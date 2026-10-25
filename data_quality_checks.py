@@ -1,6 +1,8 @@
 import great_expectations as gx
 import pandas as pd
 import urllib.parse
+import json
+import os
 from sqlalchemy import create_engine, text
 
 # --- НАСТРОЙКИ ПОДКЛЮЧЕНИЯ ---
@@ -13,6 +15,39 @@ DB_NAME = "dwh_marketplace"
 password = urllib.parse.quote_plus(DB_PASSWORD)
 DB_URL = f"postgresql+psycopg2://{DB_USER}:{password}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 engine = create_engine(DB_URL)
+
+# Путь для сохранения эталонного среднего
+BASELINE_PATH = "baseline_stats.json"
+
+def check_data_drift(df, baseline_path=BASELINE_PATH):
+    """
+    Проверяет Data Drift: сравнивает текущее среднее total_revenue с эталонным.
+    Если отклонение больше 10% — возвращает False.
+    """
+    current_mean = df['total_revenue'].mean()
+    
+    # Если эталонного файла нет — создаём его (первый запуск)
+    if not os.path.exists(baseline_path):
+        with open(baseline_path, 'w') as f:
+            json.dump({'baseline_mean': current_mean}, f)
+        print(f"  📊 Эталонное среднее сохранено: {current_mean:.2f}")
+        return True
+    
+    # Читаем эталон
+    with open(baseline_path, 'r') as f:
+        baseline = json.load(f)
+    
+    baseline_mean = baseline['baseline_mean']
+    deviation = abs(current_mean - baseline_mean) / baseline_mean * 100
+    
+    print(f"  📊 Текущее среднее: {current_mean:.2f}, Эталон: {baseline_mean:.2f}, Отклонение: {deviation:.2f}%")
+    
+    if deviation > 10:
+        print(f"  ❌ Data Drift обнаружен! Отклонение {deviation:.2f}% > 10%")
+        return False
+    else:
+        print(f"  ✅ Data Drift в норме (отклонение {deviation:.2f}% < 10%)")
+        return True
 
 def run_checks():
     print("🚀 Запуск Data Quality checks (Great Expectations)...")
@@ -69,6 +104,12 @@ def run_checks():
         for res in results.results:
             if not res.success:
                 print(f"     - {res.expectation_config.type}: {res.result}")
+
+    # 8. Проверка Data Drift
+    print("\n  🔍 Проверка Data Drift...")
+    drift_ok = check_data_drift(df)
+    if not drift_ok:
+        print("  ⚠️ Data Drift: данные отклонились от эталона!")
 
     return results
 
