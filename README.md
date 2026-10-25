@@ -30,10 +30,16 @@
 ![Дашборд](dashboard.png)
 
 ## 🛠 Технологии
-*   **Python** (Pandas, SQLAlchemy) — для ETL.
-*   **PostgreSQL** — как база данных хранилища.
-*   **SQL** — для аналитических запросов и оптимизации.
-*   **Power BI** — для визуализации.
+
+*   **Python** (Pandas, SQLAlchemy) — для ETL и обработки данных.
+*   **PostgreSQL** — основная база данных хранилища.
+*   **SQL** — для аналитических запросов и оптимизации (EXPLAIN ANALYZE).
+*   **Apache Airflow** — оркестрация ETL-пайплайна (Docker).
+*   **dbt** (data build tool) — трансформация данных (ELT), тесты и Lineage.
+*   **ClickHouse** — колоночная OLAP-СУБД для аналитики (партиционирование, TTL, Materialized View).
+*   **DuckDB** — аналитика файлов (Parquet, CSV) без ETL.
+*   **Docker** — контейнеризация (Airflow, ClickHouse).
+*   **Power BI** — визуализация данных (дашборды).
 
 ## 🗂 Data Governance (Каталогизация данных)
 
