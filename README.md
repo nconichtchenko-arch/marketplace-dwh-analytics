@@ -49,6 +49,13 @@
 
 ![Metabase Dashboard](metabase_top10.png)
 
+### Визуализация в Apache Superset
+
+Дашборд на основе витрины `fct_sales` в Apache Superset (Docker, production-образ).
+- Топ-10 товаров по выручке.
+
+![Superset Dashboard](superset_top10.png)
+
 ## 🛠 Технологии
 
 - **Python** (Pandas, SQLAlchemy) — для ETL и обработки данных.
