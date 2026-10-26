@@ -42,6 +42,13 @@
 
 ![Дашборд](dashboard_dbt.png)
 
+### Визуализация в Metabase
+
+Дашборд на основе витрины `fct_sales` (dbt-модель) в Metabase:
+- Топ-10 товаров по выручке.
+
+![Metabase Dashboard](metabase_top10.png)
+
 ## 🛠 Технологии
 
 - **Python** (Pandas, SQLAlchemy) — для ETL и обработки данных.
