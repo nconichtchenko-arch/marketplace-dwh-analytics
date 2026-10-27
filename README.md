@@ -56,6 +56,11 @@
 
 ![Superset Dashboard](superset_top10.png)
 
+### Визуализация в Yandex DataLens
+Дашборд на основе витрины `fct_sales` в Yandex DataLens.
+
+![Yandex DataLens Dashboard](datalens_top10.png)
+
 ## 🛠 Технологии
 
 - **Python** (Pandas, SQLAlchemy) — для ETL и обработки данных.
