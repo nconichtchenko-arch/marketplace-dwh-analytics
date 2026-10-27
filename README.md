@@ -70,7 +70,7 @@
 - **dbt** (data build tool) — трансформация данных (ELT), тесты и Lineage.
 - **ClickHouse** — колоночная OLAP-СУБД для аналитики (партиционирование, TTL, Materialized View).
 - **Docker** — контейнеризация (Airflow, ClickHouse).
-- **Power BI** — визуализация данных (дашборды).
+- **BI-инструменты** (Power BI, Metabase, Apache Superset, Yandex DataLens) — визуализация данных и дашборды..
 
 ## ⚙️ Оркестрация (Apache Airflow)
 
