@@ -71,9 +71,10 @@
 - Создано правило RLS: `stock_code = '23843'` для датасета `fct_sales`.
 - Пользователь с этой ролью видит только данные, соответствующие фильтру (один товар), даже если в базе есть данные по всем товарам.
 
-**Скриншоты:**
-![Настройка RLS](rls_rule.png)
-![График с примененным RLS](rls_filtered_chart.png)
+<p align="center">
+  <img src="rls_rule.png" width="45%" alt="Настройка RLS" />
+  <img src="rls_filtered_chart.png" width="45%" alt="График с RLS" />
+</p>
 
 ## 🛠 Технологии
 
