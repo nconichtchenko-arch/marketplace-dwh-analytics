@@ -86,7 +86,7 @@
 - **dbt** (data build tool) — трансформация данных (ELT), тесты и Lineage.
 - **ClickHouse** — колоночная OLAP-СУБД для аналитики (партиционирование, TTL, Materialized View).
 - **Docker** — контейнеризация (Airflow, ClickHouse).
-- **BI-инструменты** (Power BI, Metabase, Apache Superset, Yandex DataLens) — визуализация данных и дашборды..
+- **BI-инструменты** (Power BI, Metabase, Apache Superset, Yandex DataLens) — визуализация данных и дашборды.
 
 ## ⚙️ Оркестрация (Apache Airflow)
 
@@ -148,8 +148,6 @@ DAG использует:
 ![SCD Type 2 snapshot](scd_type2_snapshot.png)
 
 **Стек dbt:** `dbt-core` 1.12.6, `dbt-postgres` 1.11.0.
-
-![Результаты dbt test](dbt_test_results.png)
 
 ## ✅ Data Quality (Great Expectations)
 
