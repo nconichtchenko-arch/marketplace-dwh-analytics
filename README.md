@@ -156,6 +156,19 @@ DAG использует:
   
 ![metadata_lineage](metadata_lineage.png)`
 
+## Data Quality & Drift Monitoring (Great Expectations + Metabase)
+
+В проекте реализован мониторинг качества данных на базе **Great Expectations** с визуализацией в **Metabase**.
+
+**Что сделано:**
+- Настроены проверки (`data_quality_checks.py`): отсутствие NULL в ключевых полях (`total_revenue`, `invoice_no`, `stock_code`), отсутствие отрицательных значений в `total_revenue`.
+- Реализована проверка **Data Drift**: сравнение текущего среднего значения `total_revenue` с эталонным (отклонение > 10% считается аномалией).
+- Результаты всех проверок сохраняются в БД в схему `metadata_catalog.data_quality_results`.
+- Построен дашборд в Metabase: «Data Quality Status» (соотношение успешных/провальных проверок) и «Data Drift Monitor» (таблица с отклонениями).
+
+**Скриншот дашборда:**
+![Data Quality Dashboard](data_quality_dashboard.png)
+
 ### SCD Type 2 (dbt snapshot)
 
 Настроен снапшот `dim_customers_snapshot` (стратегия `check` по колонке `country`). dbt отслеживает изменения страны клиента и создаёт новую версию записи, сохраняя историю (SCD Type 2).
