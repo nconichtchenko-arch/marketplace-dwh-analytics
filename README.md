@@ -167,6 +167,7 @@ DAG использует:
 - Построен дашборд в Metabase: «Data Quality Status» (соотношение успешных/провальных проверок) и «Data Drift Monitor» (таблица с отклонениями).
 
 **Скриншот дашборда:**
+
 ![Data Quality Dashboard](data_quality_dashboard.png)
 
 ### SCD Type 2 (dbt snapshot)
