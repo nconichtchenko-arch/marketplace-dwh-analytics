@@ -174,7 +174,8 @@ DAG использует:
 
 Эти разделы не входят в основной DWH-пайплайн, но демонстрируют широту навыков и понимание современных инструментов.
 
-### 🔄 CDC (Change Data Capture): Настроена логическая репликация PostgreSQL (`wal_level = logical`, публикация `sales_pub`, слот `sales_slot`). Python-скрипт ловит изменения в `fct_sales` в реальном времени и выводит их (INSERT, UPDATE, DELETE).
+### 🔄 CDC (Change Data Capture) 
+Настроена логическая репликация PostgreSQL (`wal_level = logical`, публикация `sales_pub`, слот `sales_slot`). Python-скрипт ловит изменения в `fct_sales` в реальном времени и выводит их (INSERT, UPDATE, DELETE).
 
 ![CDC Demo](cdc_demo.png)
 
