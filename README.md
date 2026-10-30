@@ -139,6 +139,19 @@ DAG использует:
 
 *Примечание: Граф отражает только те зависимости, которые dbt видит в SQL-коде моделей. `fct_sales` зависит от `stg_sales`. Измерения (`dim_products`, `dim_customers`, `dim_dates`) присоединяются на уровне BI или витрин, поэтому в графе они показаны отдельно (без стрелок).*
 
+## Metadata Management (Data Catalog)
+
+В проекте реализован легковесный каталог данных (альтернатива тяжелым enterprise-решениям типа OpenMetadata/DataHub).
+
+**Как это работает:**
+- Python-скрипт `catalog_generator.py` парсит `manifest.json` из dbt (Lineage) и собирает метаданные из `information_schema` PostgreSQL.
+- Все данные сохраняются в отдельную схему `metadata_catalog.tables_metadata` (не затрагивая основные витрины).
+- Это позволяет документировать структуру таблиц и отслеживать происхождение данных (Data Lineage) без лишних затрат ресурсов.
+
+**Скриншоты:**
+- Таблица каталога: `metadata_catalog_table.png`
+- Lineage для `fact_sales`: `metadata_lineage.png`
+
 ### SCD Type 2 (dbt snapshot)
 
 Настроен снапшот `dim_customers_snapshot` (стратегия `check` по колонке `country`). dbt отслеживает изменения страны клиента и создаёт новую версию записи, сохраняя историю (SCD Type 2).
