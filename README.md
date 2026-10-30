@@ -129,6 +129,14 @@ DAG использует:
 
 **Результат:** все тесты проходят (PASS=5), данные в витрине консистентны.
 
+### 📊 Data Lineage (dbt)
+
+Скрипт `lineage_graph.py` парсит `manifest.json` из dbt и строит граф зависимостей между моделями (через `networkx` и `matplotlib`).
+
+![Data Lineage Graph](dbt_lineage_graph.png)
+
+*Примечание: Граф отражает только те зависимости, которые dbt видит в SQL-коде моделей. `fct_sales` зависит от `stg_sales`. Измерения (`dim_products`, `dim_customers`, `dim_dates`) присоединяются на уровне BI или витрин, поэтому в графе они показаны отдельно (без стрелок).*
+
 ### SCD Type 2 (dbt snapshot)
 
 Настроен снапшот `dim_customers_snapshot` (стратегия `check` по колонке `country`). dbt отслеживает изменения страны клиента и создаёт новую версию записи, сохраняя историю (SCD Type 2).
