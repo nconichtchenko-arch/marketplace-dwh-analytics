@@ -127,6 +127,8 @@ DAG использует:
   - `fct_sales.customer_id` → `dim_customers.customer_id`
   - `fct_sales.order_date` → `dim_dates.date_id`
 
+![dbt Test Results](dbt_test_results.png)
+
 **Результат:** все тесты проходят (PASS=5), данные в витрине консистентны.
 
 ### 📊 Data Lineage (dbt)
