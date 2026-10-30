@@ -149,9 +149,11 @@ DAG использует:
 - Это позволяет документировать структуру таблиц и отслеживать происхождение данных (Data Lineage) без лишних затрат ресурсов.
 
 **Скриншоты:**
-- Таблица каталога: 
+- Таблица каталога:
+
 ![metadata_catalog_table](metadata_catalog_table.png)
-- Lineage для fact_sales: 
+- Lineage для fact_sales:
+  
 ![metadata_lineage](metadata_lineage.png)`
 
 ### SCD Type 2 (dbt snapshot)
