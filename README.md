@@ -112,12 +112,15 @@
 ![Дашборд](dashboard_dbt.png)
 
 **Metabase:**
+
 ![Metabase Dashboard](metabase_top10.png)
 
 **Apache Superset:**
+
 ![Superset Dashboard](superset_top10.png)
 
 **Yandex DataLens:**
+
 ![Yandex DataLens Dashboard](datalens_top10.png)
 
 ### 🛡 Безопасность и управление доступом (RLS)
