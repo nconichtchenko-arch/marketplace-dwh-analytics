@@ -95,7 +95,7 @@
 - В каталог добавлено поле `owner` (владелец данных) и `tags` (автоматическое определение слоя: `fact`, `dim`, `staging`).
 - Скрипт `catalog_generator.py` обновляет существующие записи (`ON CONFLICT DO UPDATE`), поэтому при повторном запуске каталог не дублируется, а актуализируется.
 
-![Обновленный каталог с тегами](metadata_catalog_updated.png)
+![Обновленный каталог с тегами](metadata_catalog.tables_metadata.png)
 
 ## 🛡 Data Quality & Drift Monitoring (Great Expectations + Metabase)
 
