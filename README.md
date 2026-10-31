@@ -98,6 +98,11 @@
 - Результаты всех проверок сохраняются в БД в схему `metadata_catalog.data_quality_results`.
 - Построен дашборд в Metabase: «Data Quality Status» (круговая диаграмма) и «Data Drift Monitor» (таблица с отклонениями).
 
+**Кастомные проверки (углубление):**
+- Уникальность комбинации `invoice_no + stock_code` (в одном чеке не должно быть дублей товара).
+- Соответствие формата даты (`order_date`) регулярному выражению `YYYY-MM-DD`.
+- Отсутствие аномалий в `total_revenue` (сумма не должна превышать 100 000 за строку).
+
 **Скриншот дашборда:**
 
 ![Data Quality Dashboard](data_quality_dashboard.png)
