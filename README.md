@@ -105,6 +105,8 @@
 
 ![Кастомные проверки Data Quality](custom_dq_checks.png)
 
+![Лог выполнения проверок](dq_checks_console.png)
+
 **Скриншот дашборда:**
 
 ![Data Quality Dashboard](data_quality_dashboard.png)
