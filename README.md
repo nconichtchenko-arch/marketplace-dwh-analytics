@@ -91,6 +91,12 @@
 ![metadata_catalog_table](metadata_catalog_table.png)
 ![metadata_lineage](metadata_lineage.png)
 
+**Что добавлено (углубление):**
+- В каталог добавлено поле `owner` (владелец данных) и `tags` (автоматическое определение слоя: `fact`, `dim`, `staging`).
+- Скрипт `catalog_generator.py` обновляет существующие записи (`ON CONFLICT DO UPDATE`), поэтому при повторном запуске каталог не дублируется, а актуализируется.
+
+![Обновленный каталог с тегами](metadata_catalog_updated.png)
+
 ## 🛡 Data Quality & Drift Monitoring (Great Expectations + Metabase)
 
 В проекте реализован мониторинг качества данных на базе **Great Expectations** с визуализацией в **Metabase**.
