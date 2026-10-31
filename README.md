@@ -141,6 +141,8 @@
 
 Помимо бенчмарка (PostgreSQL vs ClickHouse — ускорение 6.8x), были отработаны продвинутые механизмы:
 
+![ClickHouse Benchmark](clickhouse_benchmark.png)
+
 - **Партиционирование** (`MergeTree`, `PARTITION BY toYYYYMM(event_date)`).
 - **TTL** — автоматическое удаление устаревших данных (старше 30 дней).
 - **Materialized View** (`SummingMergeTree`) — предагрегация данных при вставке.
