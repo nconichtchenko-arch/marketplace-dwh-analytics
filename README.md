@@ -194,6 +194,8 @@
 - **BI-инструменты** (Power BI, Metabase, Apache Superset, Yandex DataLens) — визуализация данных.
 - **Great Expectations** — тестирование качества данных.
 - **Data Vault 2.0** — архитектурный паттерн для Enterprise DWH.
+- **PySpark** — анализ данных в Google Colab.
+- **Kafka** — потоковая передача данных (CDC).
 
 ## 📫 Контакты
 
