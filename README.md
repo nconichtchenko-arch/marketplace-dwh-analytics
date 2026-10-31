@@ -107,6 +107,8 @@
 
 ![Лог выполнения проверок](dq_checks_console.png)
 
+![Результаты dbt-тестов (обновленные)](dbt_test_results_updated.png)
+
 **Скриншот дашборда:**
 
 ![Data Quality Dashboard](data_quality_dashboard.png)
