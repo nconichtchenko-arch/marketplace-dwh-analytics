@@ -103,6 +103,8 @@
 - Соответствие формата даты (`order_date`) регулярному выражению `YYYY-MM-DD`.
 - Отсутствие аномалий в `total_revenue` (сумма не должна превышать 100 000 за строку).
 
+![Кастомные проверки Data Quality](custom_dq_checks.png)
+
 **Скриншот дашборда:**
 
 ![Data Quality Dashboard](data_quality_dashboard.png)
