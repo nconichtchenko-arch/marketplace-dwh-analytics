@@ -169,6 +169,7 @@ DAG использует:
 Data Vault 2.0 используется в корпоративных хранилищах (Enterprise DWH) для гибкой историзации данных и масштабирования. Это показывает понимание современных архитектурных паттернов.
 
 **ER-диаграмма:**
+
 ![Data Vault ER Diagram](data_vault_er_diagram.png)
 
 ## Data Quality & Drift Monitoring (Great Expectations + Metabase)
