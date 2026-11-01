@@ -97,6 +97,17 @@
 
 ![Обновленный каталог с тегами](metadata_catalog.tables_metadata.png)
 
+**Веб-интерфейс (Streamlit):**
+- Скрипт `data_catalog_ui.py` запускает веб-интерфейс для просмотра каталога.
+- Фильтры по тегам и владельцам.
+- Запуск: `streamlit run data_catalog_ui.py` (открывается на `http://localhost:8501`).
+
+**Общий вид:**
+![Data Catalog UI](data_catalog_ui_general.png)
+
+**Детали таблицы `fact_sales`:**
+![Data Catalog Details](data_catalog_ui_details.png)
+
 ## 🛡 Data Quality & Drift Monitoring (Great Expectations + Metabase)
 
 В проекте реализован мониторинг качества данных на базе **Great Expectations** с визуализацией в **Metabase**.
