@@ -143,6 +143,13 @@
 
 ![Yandex DataLens Dashboard](datalens_top10.png)
 
+**Алертинг (Data Observability):**
+- Настроен ежедневный алерт в Metabase на график «Data Quality Status».
+- Условие: уведомление отправляется, если на графике есть результаты (т.е. есть `failed` проверки).
+- Получатель: `pavloni@mail.ru`.
+
+![Список алертов в Metabase](metabase_alert_list.png)
+
 ### 🛡 Безопасность и управление доступом (RLS)
 
 В проекте настроен механизм **Row-Level Security (RLS)** в Apache Superset. Это позволяет ограничивать доступ к данным на уровне строк в зависимости от роли пользователя.
