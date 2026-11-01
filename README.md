@@ -103,9 +103,11 @@
 - Запуск: `streamlit run data_catalog_ui.py` (открывается на `http://localhost:8501`).
 
 **Общий вид:**
+
 ![Data Catalog UI](data_catalog_ui_general.png)
 
 **Детали таблицы `fact_sales`:**
+
 ![Data Catalog Details](data_catalog_ui_details.png)
 
 ## 🛡 Data Quality & Drift Monitoring (Great Expectations + Metabase)
