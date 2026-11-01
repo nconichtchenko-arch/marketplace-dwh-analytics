@@ -78,7 +78,7 @@
 
 ![Data Vault ER Diagram (полная)](data_vault_er_diagram_full.png)
 
-## 🗂 Metadata Management (Data Catalog)
+## Metadata Management (Data Catalog)
 
 В проекте реализован легковесный каталог данных (альтернатива тяжелым enterprise-решениям типа OpenMetadata/DataHub).
 
