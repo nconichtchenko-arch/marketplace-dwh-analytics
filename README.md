@@ -123,6 +123,13 @@
 ![Data Quality Dashboard](data_quality_dashboard.png)
 ![Результат проверок Data Quality](data_quality_check_result.png)
 
+**Алертинг (Data Observability):**
+- Настроен ежедневный алерт в Metabase на график «Data Quality Status».
+- Условие: уведомление отправляется, если на графике есть результаты (т.е. есть `failed` проверки).
+- Получатель: `pavloni@mail.ru`.
+
+![Список алертов в Metabase](metabase_alert_list.png)
+
 ## 📊 Визуализация (BI)
 
 На основе витрины `fct_sales` (dbt-модель) построены дашборды в четырех BI-инструментах.
@@ -143,12 +150,6 @@
 
 ![Yandex DataLens Dashboard](datalens_top10.png)
 
-**Алертинг (Data Observability):**
-- Настроен ежедневный алерт в Metabase на график «Data Quality Status».
-- Условие: уведомление отправляется, если на графике есть результаты (т.е. есть `failed` проверки).
-- Получатель: `pavloni@mail.ru`.
-
-![Список алертов в Metabase](metabase_alert_list.png)
 
 ### 🛡 Безопасность и управление доступом (RLS)
 
