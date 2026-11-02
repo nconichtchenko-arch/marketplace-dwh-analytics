@@ -69,14 +69,14 @@
 **Что реализовано (полная модель):**
 - **Hub (Хабы):** `hub_customer` (клиенты), `hub_order` (заказы), `hub_product` (товары).
 - **Link (Линки):** `link_order_customer` (связь заказа и клиента), `link_order_product` (связь заказа и товара).
-- **Satellite (Сателлиты):** `sat_customer_details` (страна клиента с историей), `sat_order_details` (атрибуты заказа: дата, количество, сумма с историей).
+- **Satellite (Сателлиты):** `sat_customer_details` (страна клиента с историей), `sat_order_details` (атрибуты заказа с историей), `sat_product_details` (описание и цена продукта с историей).
 
 **Объем данных:**
 - `hub_order`: 18 536 уникальных заказов.
 - `hub_product`: 3 665 уникальных товаров.
 - `link_order_product`: 387 875 связей «заказ-товар».
 
-![Data Vault ER Diagram (полная)](data_vault_er_diagram_full.png)
+![Data Vault ER Diagram (полная)](data_vault_er_diagram_full_v2.png)
 
 ## 🗂 Metadata Management (Data Catalog)
 
