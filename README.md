@@ -43,6 +43,7 @@
 - `stg_sales` (staging) — очистка и подготовка данных из `fact_sales`.
 - `dim_products`, `dim_customers`, `dim_dates` (marts) — измерения для модели «Звезда».
 - `fct_sales` (marts) — **инкрементальная** витрина продаж.
+- `mart_sales_funnel` (marts) — **витрина воронки продаж** (агрегация заказов по дням с расчетом конверсии и выручки).
 
 **Тестирование и качество данных (dbt):**
 - Тесты `not_null` для ключевых полей (`invoice_no`, `stock_code`, `total_revenue`).
@@ -76,7 +77,7 @@
 - `hub_product`: 3 665 уникальных товаров.
 - `link_order_product`: 387 875 связей «заказ-товар».
 
-![Data Vault ER Diagram (полная)](data_vault_er_diagram_full_v2.png)
+![Data Vault ER Diagram (полная)](data_vault_er_diagram_full.png)
 
 ## 🗂 Metadata Management (Data Catalog)
 
@@ -126,9 +127,7 @@
 - Отсутствие аномалий в `total_revenue` (сумма не должна превышать 100 000 за строку).
 
 ![Кастомные проверки Data Quality](custom_dq_checks.png)
-
 ![Лог выполнения проверок](dq_checks_console.png)
-
 ![Результаты dbt-тестов (обновленные)](dbt_test_results_updated.png)
 
 **Скриншот дашборда:**
@@ -142,6 +141,12 @@
 - Получатель: `pavloni@mail.ru`.
 
 ![Список алертов в Metabase](metabase_alert_list.png)
+
+**Витрина воронки продаж (`mart_sales_funnel`):**
+- Агрегация заказов по дням с расчетом конверсии (оплаченные/отмененные) и общей выручки.
+- *Примечание:* В датасете отсутствует поле «статус заказа», поэтому все заказы считаются оплаченными (конверсия 100%). В реальном проекте здесь была бы логика по статусам.
+
+![Витрина воронки продаж](mart_sales_funnel.png)
 
 ## 📊 Визуализация (BI)
 
@@ -162,7 +167,6 @@
 **Yandex DataLens:**
 
 ![Yandex DataLens Dashboard](datalens_top10.png)
-
 
 ### 🛡 Безопасность и управление доступом (RLS)
 
